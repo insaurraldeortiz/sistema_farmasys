@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ticket" language="groovy" pageWidth="720" pageHeight="842" columnWidth="680" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8effab96-84ee-460a-92d2-c4d6685926c0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha_i" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha_f" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select v.fecha_venta, v.nombre_cliente, v.id_venta, vd.codigo_articulo, vd.nombre_articulo, vd.cantidad_ventadetalle, vd.precioventa_articulo
+from (select * from ventas c left join clientes a on c.id_cliente=a.id_cliente) v ,
+(select * from ventas_detalle dp left join ventas p on p.id_venta=dp.id_venta left join articulos a on a.id_articulo=dp.id_articulo) vd where v.fecha_venta between $P{fecha_i} and $P{fecha_f}]]>
+	</queryString>
+	<field name="fecha_venta" class="java.sql.Date"/>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="id_venta" class="java.lang.Integer"/>
+	<field name="codigo_articulo" class="java.lang.Integer"/>
+	<field name="nombre_articulo" class="java.lang.String"/>
+	<field name="cantidad_ventadetalle" class="java.lang.Integer"/>
+	<field name="precioventa_articulo" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement x="84" y="27" width="25" height="9" uuid="8523cc87-1d23-430f-aa6a-bd174a1ba46e"/>
+				<textElement>
+					<font fontName="Courier New" size="6" isBold="true" isUnderline="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Ticket]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="103" y="0" width="42" height="20" uuid="d800f17b-9fc7-4ef0-8a51-b4919490b5e3"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[fecha_venta]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="145" y="0" width="41" height="20" uuid="afb5f1ca-6ca7-4a87-99bc-4c2a0f12ecde"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="26" height="20" uuid="5d2aa221-8860-45b9-9aad-19eef26d9d6c"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[nombre_cliente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="36" y="0" width="58" height="20" uuid="442dd148-4752-4bf6-9fca-46f33705478b"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="36" height="20" uuid="892d3799-41ee-4e4f-a5f8-60d4751eeb85"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[id_venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="16" height="20" uuid="6b3fc8a5-650b-4ed2-9717-669edabc9472"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[codigo_articulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="103" y="0" width="32" height="20" uuid="8dd54c34-7274-4151-92ce-28e920bdebcd"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[cantidad_ventadetalle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="0" width="41" height="20" uuid="a0a96822-e9ea-4b66-966a-a16e5a474b93"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[precioventa_articulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="0" width="24" height="20" uuid="2b76620d-1f4a-4061-ab86-1b01e79ae7f9"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<text><![CDATA[nombre_articulo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="36" height="20" uuid="fb985154-01f3-41c9-83a5-5be4dd21ddfc"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_venta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="16" height="20" uuid="f518d06e-1fde-4fc1-a643-4e328e17889e"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="0" width="32" height="20" uuid="026ccf0b-c6c3-49c9-a911-5cbe66eea75c"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad_ventadetalle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="145" y="0" width="41" height="20" uuid="431dc489-c4d4-4e99-8e8d-b410398fe40b"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioventa_articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="0" width="24" height="20" uuid="ed65b489-7617-4105-ae4f-e4157c2e2b6b"/>
+				<textElement>
+					<font fontName="Courier New" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_articulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

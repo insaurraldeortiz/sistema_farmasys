@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Farmasys | Articulos</title>
+        <link rel="icon" type="image/png" href="../../../img/fav.bmp"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../../../css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../css/estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="confirmar"></div>
+        <div id="buscar"></div>
+        <div id="panelPrograma" class="panel panel-primary" style="max-width: 65%; margin: auto;">
+            <div class="panel-heading centrado">Articulos  | <span
+                    id="susuario_usuario"></span></div>
+            <div class="panel-body">
+                <form id="formPrograma">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Id</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_articulo" name="id_articulo" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdArticulo" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-9">   
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Codigo</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="codigo_articulo" name="codigo_articulo" type="text" class="form-control input-sm" placeholder="Codigo" onkeypress="SoloNumeros(event)" onkeyup="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Nombre</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="nombre_articulo" name="nombre_articulo" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Marca</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_marca" name="id_marca" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdMarca" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <input id="nombre_marca" name="nombre_marca" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Precio Compra</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="preciocompra_articulo" name="preciocompra_articulo" type="text" class="form-control input-sm" placeholder="Precio Compra" onkeypress= " return SoloNumeros(event)" onkeyup="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Precio Venta</span>
+                        </div>
+                        <div class="col-md-11">
+                            <input id="precioventa_articulo" name="precioventa_articulo" type="text" class="form-control input-sm" placeholder="Precio Venta" onkeypress= " return SoloNumeros(event)" onkeyup="this.value = this.value.toUpperCase()">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Rubro</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_rubro" name="id_rubro" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdRubro" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <input id="nombre_rubro" name="nombre_rubro" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Categoria</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_categoria" name="id_categoria" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdCategoria" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <input id="nombre_categoria" name="nombre_categoria" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Presentacion</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_presentacion" name="id_presentacion" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdPresentacion" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+
+                        <div class="col-md-3">
+                            <input id="nombre_presentacion" name="nombre_presentacion" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Proveedor</span>
+                        </div>
+                        <div class="col-md-1">
+                            <input id="id_proveedor" name="id_proveedor" type="text"
+                                   class="form-control input-sm" placeholder="Id">
+                        </div>
+                        <div class="col-md-1">
+                            <button id="botonBuscarIdProveedor" type="button" class="btn btn-primary btn-sm"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                        <div class="col-md-3">
+                            <input id="nombre_proveedor" name="nombre_proveedor" type="text" class="form-control input-sm" placeholder="Nombre" onkeypress= " return soloLetras(event)" onkeyup="this.value = this.value.toUpperCase()" readonly="">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <span>Iva</span>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" id="iva_articulo" name="iva_articulo">
+                                <option  value="Exenta">Exenta</option>
+                                <option id="iva_articulo" value="5%">5%</option>
+                                <option id="iva_articulo" value="10%">10%</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer centrado">
+                <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+                <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+                <button id="BotonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                        data-target="#confirmarEliminar">Eliminar</button>
+                <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+            </div>
+        </div>
+        <div id="mensajes" class="well well-sm centrado">Mensaje del Sistema.</div>
+        <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header centrado">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">
+                                &times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+                    </div>
+                    <div class="modal-footer centrado">
+                        <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../../js/funciones.js" type="text/javascript"></script>
+        <script src="js/funciones.js" type="text/javascript"></script>
+        <script>
+                                //verificarSesion(true);
+                                $("#buscar").css("display", "none");
+                                //("#id_articulo").focus();
+                                //siguientecampo("#id_articulo", "#nombre_articulo", false);
+                                $("#id_articulo").blur(function () {
+                                    if ($("#id_articulo").val() === "") {
+                                        $("#id_articulo").val("0");
+                                    }
+                                    buscarIdArticulo();
+                                });
+                                $("#botonBuscarIdArticulo").on('click', function () {
+                                    $("#buscar").load("buscar.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#id_marca").blur(function () {
+                                    if ($("#id_marca").val() === "") {
+                                        $("#id_marca").val("0");
+                                    }
+                                    buscarIdMarca();
+                                });
+                                $("#botonBuscarIdMarca").on('click', function () {
+                                    $("#buscar").load("buscarMarca.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#id_rubro").blur(function () {
+                                    if ($("#id_rubro").val() === "") {
+                                        $("#id_rubro").val("0");
+                                    }
+                                    buscarIdRubro();
+                                });
+                                $("#botonBuscarIdRubro").on('click', function () {
+                                    $("#buscar").load("buscarRubro.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#id_categoria").blur(function () {
+                                    if ($("#id_categoria").val() === "") {
+                                        $("#id_categoria").val("0");
+                                    }
+                                    buscarIdCategoria();
+                                });
+                                $("#botonBuscarIdCategoria").on('click', function () {
+                                    $("#buscar").load("buscarCategoria.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#id_presentacion").blur(function () {
+                                    if ($("#id_presentacion").val() === "") {
+                                        $("#id_presentacion").val("0");
+                                    }
+                                    buscarIdPresentacion();
+                                });
+                                $("#botonBuscarIdPresentacion").on('click', function () {
+                                    $("#buscar").load("buscarPresentacion.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#id_proveedor").blur(function () {
+                                    if ($("#id_proveedor").val() === "") {
+                                        $("#id_proveedor").val("0");
+                                    }
+                                    buscarIdProveedor();
+                                });
+                                $("#botonBuscarIdProveedor").on('click', function () {
+                                    $("#buscar").load("buscarProveedor.html");
+                                    $("#buscar").fadeIn("slow");
+                                    $("#panelPrograma").fadeOut("slow");
+                                });
+
+                                $("#botonAgregar").on('click', function () {
+                                    //if (validarFormulario()) {
+                                    agregarArticulo();
+                                    //}  
+                                });
+                                $("#botonModificar").on('click', function () {
+                                    //if(validarFormulario()) {
+                                    modificarArticulo();
+                                    //}   
+                                });
+                                $("#botonEliminarAlert").on('click', function () {
+                                    eliminarArticulo();
+                                    $('#confirmarEliminar').modal('hide');
+                                });
+                                $("#botonSalir").on('click', function () {
+                                    location.href = "../../../menu.html";
+                                });
+
+        </script>
+    </body>
+</html>

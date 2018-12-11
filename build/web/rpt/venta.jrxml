@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="venta" language="groovy" pageWidth="226" pageHeight="842" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="abfa8dea-8f56-458c-b168-0213126b2039">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="136"/>
+	<parameter name="VENTA" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select c.nombre_cliente, c.fecha_venta, d.codigo_articulo, d.nombre_articulo, d.precioventa_articulo, d.cantidad_ventadetalle, d.iva_articulo
+from
+(select *
+from ventas_detalle vd
+join articulos a on vd.id_articulo = a.id_articulo) d ,
+(select *
+from ventas v
+join clientes c on v.id_cliente=c.id_cliente) c where c.id_venta = $P{VENTA}]]>
+	</queryString>
+	<field name="nombre_cliente" class="java.lang.String"/>
+	<field name="fecha_venta" class="java.sql.Date"/>
+	<field name="codigo_articulo" class="java.lang.String"/>
+	<field name="nombre_articulo" class="java.lang.String"/>
+	<field name="precioventa_articulo" class="java.lang.Integer"/>
+	<field name="cantidad_ventadetalle" class="java.lang.Integer"/>
+	<field name="iva_articulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="71" y="0" width="43" height="13" uuid="46d07aac-45a9-450f-9d73-0dc4d282cf59"/>
+				<text><![CDATA[Farmacia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="13" width="107" height="20" uuid="fd2bbe1e-3f9d-4e51-855a-c2b15434e7f1"/>
+				<text><![CDATA[Virgen de los Remedios]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="33" height="20" uuid="ccd6fff6-cda5-49c1-a404-02b256348d0e"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="33" y="0" width="51" height="20" uuid="e4d106f6-eed7-4921-9941-d64a79b6783e"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="97" y="0" width="17" height="20" uuid="f6e96057-8734-49cf-a9ab-80696be23806"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[fecha:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="142" y="0" width="44" height="20" uuid="0dabc668-6dc9-4243-8883-8a2764fc2dea"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_venta}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="10" uuid="f208188f-a50f-4ce3-bdec-c85a9721ad93"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="0" width="23" height="10" uuid="ca07ab9c-2237-4530-8699-5eb2394ecec0"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[articulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="0" width="17" height="10" uuid="d47d762c-d206-4d93-844a-daf4faa7d893"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="0" width="26" height="10" uuid="a0e53756-c32d-4830-b4ec-846fd6c3c02f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="0" width="10" height="10" uuid="d1b8ae94-f51c-40f6-b65b-e6b6dbb62c79"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[iva]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="43" height="20" uuid="1601c143-8344-48a8-b831-464fb0477c08"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo_articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="0" width="52" height="20" uuid="960b6321-53e8-450a-b517-43599cc6a969"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="0" width="37" height="20" uuid="cb7cea02-5e70-4de3-b3e1-0372768a9166"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioventa_articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="0" width="31" height="20" uuid="1e76e39f-90c1-425e-b2b2-5fe551bd4e92"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad_ventadetalle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="0" width="23" height="20" uuid="550ebb06-522e-40ff-8a1e-ce2f6535f2e2"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{iva_articulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
